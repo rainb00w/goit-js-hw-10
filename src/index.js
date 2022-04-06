@@ -35,27 +35,30 @@ function OutputData(e) {
       } else if (country.length > 10) {
         Notiflix.Notify.info(`Too many matches found. Please enter a more specific name`);
       } else if (country.length > 1 && country.length < 10) {
+          console.log(country);
         country.forEach(element => {
-          // console.log(element);
+        
           refs.outputList.innerHTML += `<li class="country-list"> <img src="${element.flags.svg}" alt="Country flag" height="15"> ${element.name.official} </li>`;
           // refs.outputList.innerHTML += `<li class="country-list"> List. You were searched for - ${element.name.common}, flag - ${element.flag} </li>`;
         });
       } else if (country.length === 1) {
-        {
+
+        for (const currentCountry of country) {
           refs.outputInfo.innerHTML = `<li class="country-list"> <img src="${
-            country[0].flags.svg
+            currentCountry.flags.svg
           }" alt="Country flag" height="15"> ${
-            country[0].name.official
+            currentCountry.name.official
           } </li><li class="country-list"> Capital: ${
-            country[0].capital
+            currentCountry.capital
           } </li><li class="country-list"> Population: ${
-            country[0].population
-          } </li><li class="country-list"> Languages: ${Object.values(country[0].languages)} </li>`;
+            currentCountry.population
+          } </li><li class="country-list"> Languages: ${Object.values(currentCountry.languages)} </li>`;
         }
       }
     })
     .catch(error => {
-      console.log('CATCHHHH !!!');
+      console.log('CATCH !');
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
 }
+
