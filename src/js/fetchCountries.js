@@ -13,4 +13,3 @@ function fetchCountry(insertedName) {
 
   export default {fetchCountry};
 
-
